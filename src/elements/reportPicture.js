@@ -1,5 +1,7 @@
 import html2canvas from 'html2canvas';
 import icon from '../icons/photo.svg';
+import overlay from "./overlay";
+import reportPreview from "./reportPreview";
 
 const reportPicture = document.createElement('button');
 reportPicture.result = null;
@@ -16,6 +18,8 @@ reportPicture.innerHTML = icon;
 reportPicture.onclick = () => {
     html2canvas(document.body).then(function(canvas) {
         reportPicture.result = canvas;
+        overlay.open();
+        reportPreview.picture(canvas);
     });
 }
 

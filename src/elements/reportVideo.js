@@ -39,8 +39,6 @@ reportVideo.onclick = () => {
             reportVideo.result = URL.createObjectURL(completeBlob);
             overlay.open();
             reportPreview.video.refresh(URL.createObjectURL(completeBlob));
-
-
         };
         stop.addEventListener("click", () => {
             recorder.stop();

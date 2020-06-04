@@ -1,4 +1,7 @@
 import overlay from "./overlay";
+import sendReport from "../util/sendReport";
+import reportVideo from "./reportVideo";
+import reportPicture from "./reportPicture";
 
 const feedbackForm = document.createElement('div');
 
@@ -43,8 +46,19 @@ form.style.display = "block";
 form.action = "https://localhost:1234/report";
 form.method = "POST";
 form.autocomplete = false;
-form.onsubmit = () => {
-    overlay.close()
+form.onsubmit = (event) => {
+
+    const userFeedbackText = textAreaElement.value;
+
+    if (reportPicture.result !== null) {
+        sendReport(userFeedbackText, reportPicture.result.toDataURL());
+    }
+    if (reportVideo.result !== null) {
+        sendReport(userFeedbackText, reportVideo.result);
+    }
+    textAreaElement.value = "";
+    overlay.close();
+    return false;
 }
 
 form.appendChild(document.createElement("hr"));
