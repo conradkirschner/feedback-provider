@@ -15,13 +15,15 @@ reportPicture.innerHTML = icon;
 /**
  * Record a screenshot
  */
-reportPicture.onclick = () => {
+const doScreenshot = () => {
     html2canvas(document.body).then(function(canvas) {
         reportPicture.result = canvas;
         overlay.open();
         reportPreview.picture(canvas);
     });
 }
+reportPicture.ontouchend = doScreenshot;
+reportPicture.onclick = doScreenshot;
 
 export default reportPicture;
 

@@ -23,6 +23,7 @@ function dragElement(elmnt) {
     }
 
     function elementDrag(e) {
+        e.preventDefault();
         let x,y;
         e = e || window.event;
         debugger;

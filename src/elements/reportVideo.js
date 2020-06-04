@@ -23,7 +23,7 @@ reportVideo.isRecording = false;
 const start = reportVideo;
 const stop = reportVideo;
 let recorder, stream;
-reportVideo.onclick = () => {
+const doVideo =  () => {
 
     async function startRecording() {
 
@@ -60,5 +60,8 @@ reportVideo.onclick = () => {
 
 
 }
+reportVideo.onclick = doVideo;
+reportVideo.ontouchend = doVideo;
+
 export default reportVideo;
 
