@@ -97,6 +97,18 @@ eval("/*!\n * html2canvas 1.0.0-rc.5 <https://html2canvas.hertzen.com>\n * Copyr
 
 /***/ }),
 
+/***/ "./src/elements/feedbackForm.js":
+/*!**************************************!*\
+  !*** ./src/elements/feedbackForm.js ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _icons_photo_svg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../icons/photo.svg */ \"./src/icons/photo.svg\");\n/* harmony import */ var _icons_photo_svg__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_icons_photo_svg__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _overlay__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./overlay */ \"./src/elements/overlay.js\");\n\r\n\r\nconst feedbackForm = document.createElement('div');\r\n\r\n/**\r\n * Form Elements\r\n */\r\nconst form = document.createElement('form');\r\nconst headingElement1 = document.createElement('h1');\r\nconst headingElement2 = document.createElement('h2');\r\nconst textAreaElement = document.createElement('textarea');\r\nconst submit = document.createElement('button');\r\n/**\r\n * Headlines\r\n */\r\nheadingElement1.style.margin = \"0\"\r\nheadingElement1.innerText = \"Danke!\"\r\n\r\nheadingElement2.innerText = \"Steps to reproduce:\"\r\nheadingElement2.style.margin = \"0\"\r\n\r\n/**\r\n * Submit\r\n */\r\nsubmit.type = \"submit\";\r\nsubmit.innerText = \"Absenden\";\r\nsubmit.style.border = \"1px solid black\";\r\nsubmit.style.margin = \"10px\";\r\nsubmit.style.height = \"30px\";\r\n/**\r\n * Form\r\n */\r\nform.style.display = \"grid\";\r\nform.action = \"https://localhost:1234/report\";\r\nform.method = \"POST\";\r\nform.autocomplete = false;\r\nform.onsubmit = () => {\r\n    _overlay__WEBPACK_IMPORTED_MODULE_1__[\"default\"].close()\r\n}\r\nform.appendChild(headingElement1);\r\nform.appendChild(headingElement2);\r\nform.appendChild(textAreaElement);\r\nform.appendChild(submit);\r\nfeedbackForm.appendChild(form);\r\nfeedbackForm.style.margin = \"0 auto\";\r\nfeedbackForm.style.width = \"100%\";\r\nfeedbackForm.style.height = \"100%\";\r\nfeedbackForm.style.backgroundColor = \"white\";\r\nfeedbackForm.style.display = \"flex\";\r\nfeedbackForm.style.justifyContent = \"center\";\r\nfeedbackForm.style.alignItems = \"center\";\r\n\r\n/* harmony default export */ __webpack_exports__[\"default\"] = (feedbackForm);\n\n//# sourceURL=webpack:///./src/elements/feedbackForm.js?");
+
+/***/ }),
+
 /***/ "./src/elements/index.js":
 /*!*******************************!*\
   !*** ./src/elements/index.js ***!
@@ -106,6 +118,18 @@ eval("/*!\n * html2canvas 1.0.0-rc.5 <https://html2canvas.hertzen.com>\n * Copyr
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"elements\", function() { return elements; });\n/* harmony import */ var _root__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./root */ \"./src/elements/root.js\");\n\r\n\r\nconst elements = {feedbackProvider: _root__WEBPACK_IMPORTED_MODULE_0__[\"feedbackProvider\"]};\r\n\n\n//# sourceURL=webpack:///./src/elements/index.js?");
+
+/***/ }),
+
+/***/ "./src/elements/overlay.js":
+/*!*********************************!*\
+  !*** ./src/elements/overlay.js ***!
+  \*********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _feedbackForm__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./feedbackForm */ \"./src/elements/feedbackForm.js\");\n\r\n\r\n\r\nconst overlay = document.createElement('Overlay');\r\n\r\noverlay.style.position = \"fixed\";\r\noverlay.style.left = \"0\";\r\noverlay.style.top = \"0\";\r\noverlay.style.zIndex = \"2147483647\";\r\noverlay.style.height = \"100vh\";\r\noverlay.style.width = \"100vw\";\r\noverlay.style.backgroundColor = \"white\";\r\noverlay.appendChild(_feedbackForm__WEBPACK_IMPORTED_MODULE_0__[\"default\"]);\r\n\r\noverlay.close = () => {\r\n    overlay.style.display = \"none\";\r\n};\r\noverlay.open = () => {\r\n    overlay.style.display = \"initial\";\r\n};\r\n/* harmony default export */ __webpack_exports__[\"default\"] = (overlay);\n\n//# sourceURL=webpack:///./src/elements/overlay.js?");
 
 /***/ }),
 
@@ -141,7 +165,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _ico
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"feedbackProvider\", function() { return feedbackProvider; });\n/* harmony import */ var _reportPicture__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./reportPicture */ \"./src/elements/reportPicture.js\");\n/* harmony import */ var _reportVideo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./reportVideo */ \"./src/elements/reportVideo.js\");\n\r\n\r\n\r\nconst feedbackProvider = document.createElement('FeedbackProvider');\r\n\r\nfeedbackProvider.style.position = \"fixed\";\r\nfeedbackProvider.style.top = \"35%\";\r\nfeedbackProvider.style.left = \"0\";\r\nfeedbackProvider.style.zIndex = \"10000000000000\";\r\nfeedbackProvider.style.width = \"80px\";\r\nfeedbackProvider.style.height = \"200px\";\r\nfeedbackProvider.style.padding = \"20px\";\r\nfeedbackProvider.style.backgroundColor = \"lightgray\";\r\n\r\nfeedbackProvider.appendChild(_reportPicture__WEBPACK_IMPORTED_MODULE_0__[\"default\"]);\r\nfeedbackProvider.appendChild(_reportVideo__WEBPACK_IMPORTED_MODULE_1__[\"default\"]);\r\n\r\n\n\n//# sourceURL=webpack:///./src/elements/root.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"feedbackProvider\", function() { return feedbackProvider; });\n/* harmony import */ var _reportPicture__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./reportPicture */ \"./src/elements/reportPicture.js\");\n/* harmony import */ var _reportVideo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./reportVideo */ \"./src/elements/reportVideo.js\");\n/* harmony import */ var _overlay__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./overlay */ \"./src/elements/overlay.js\");\n\r\n\r\n\r\nconst feedbackProvider = document.createElement('FeedbackProvider');\r\n\r\nfeedbackProvider.style.position = \"fixed\";\r\nfeedbackProvider.style.top = \"35%\";\r\nfeedbackProvider.style.left = \"0\";\r\nfeedbackProvider.style.zIndex = \"2147483644\";\r\nfeedbackProvider.style.width = \"80px\";\r\nfeedbackProvider.style.height = \"200px\";\r\nfeedbackProvider.style.padding = \"20px\";\r\nfeedbackProvider.style.backgroundColor = \"lightgray\";\r\n_overlay__WEBPACK_IMPORTED_MODULE_2__[\"default\"].open();\r\nfeedbackProvider.appendChild(_reportPicture__WEBPACK_IMPORTED_MODULE_0__[\"default\"]);\r\ndocument.body.appendChild(_overlay__WEBPACK_IMPORTED_MODULE_2__[\"default\"]);\r\nfeedbackProvider.appendChild(_reportVideo__WEBPACK_IMPORTED_MODULE_1__[\"default\"]);\r\n\n\n//# sourceURL=webpack:///./src/elements/root.js?");
 
 /***/ }),
 
