@@ -1,4 +1,5 @@
 import feedbackForm from "./feedbackForm";
+import reportPreview from "./reportPreview";
 
 
 const overlay = document.createElement('Overlay');
@@ -10,6 +11,16 @@ overlay.style.zIndex = "2147483647";
 overlay.style.height = "100vh";
 overlay.style.width = "100vw";
 overlay.style.backgroundColor = "white";
+/**
+ * report preview
+ */
+feedbackForm.prepend(document.createElement("br"));
+
+feedbackForm.prepend(reportPreview);
+
+/**
+ * feedback form
+ */
 overlay.appendChild(feedbackForm);
 
 overlay.close = () => {
