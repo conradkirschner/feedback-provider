@@ -1,7 +1,9 @@
 import icon from "../icons/video.svg";
+import overlay from "./overlay";
 
 const reportVideo = document.createElement('button');
 
+reportVideo.result = null;
 reportVideo.style.marginLeft = "5px";
 reportVideo.style.marginRight = "5px";
 reportVideo.style.width = "70px";
@@ -15,7 +17,7 @@ reportVideo.innerHTML = icon;
  */
 reportVideo.onclick = () => {
     const start = reportVideo;
-    const stop = document.createElement("div");
+    const stop = reportVideo;
     const video = document.querySelector("video");
     let recorder, stream;
 
@@ -29,7 +31,8 @@ reportVideo.onclick = () => {
         recorder.ondataavailable = e => chunks.push(e.data);
         recorder.onstop = e => {
             const completeBlob = new Blob(chunks, { type: chunks[0].type });
-            //video.src = URL.createObjectURL(completeBlob);
+            reportVideo.result = URL.createObjectURL(completeBlob);
+            overlay.open();
         };
 
         recorder.start();

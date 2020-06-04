@@ -11,7 +11,7 @@ feedbackProvider.style.width = "80px";
 feedbackProvider.style.height = "200px";
 feedbackProvider.style.padding = "20px";
 feedbackProvider.style.backgroundColor = "lightgray";
-overlay.open();
+overlay.close();
 feedbackProvider.appendChild(pictureButton);
 document.body.appendChild(overlay);
 feedbackProvider.appendChild(videoButton);
