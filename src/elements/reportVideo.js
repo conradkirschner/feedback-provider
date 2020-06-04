@@ -1,5 +1,8 @@
 import icon from "../icons/video.svg";
+import iconStop from "../icons/video-pause.svg";
 import overlay from "./overlay";
+import reportPicture from "./reportPicture";
+import reportPreview from "./reportPreview";
 
 const reportVideo = document.createElement('button');
 
@@ -15,13 +18,15 @@ reportVideo.innerHTML = icon;
 /**
  * record a video
  */
+reportVideo.isRecording = false;
+
+const start = reportVideo;
+const stop = reportVideo;
+let recorder, stream;
 reportVideo.onclick = () => {
-    const start = reportVideo;
-    const stop = reportVideo;
-    const video = document.querySelector("video");
-    let recorder, stream;
 
     async function startRecording() {
+
         stream = await navigator.mediaDevices.getDisplayMedia({
             video: { mediaSource: "screen" }
         });
@@ -33,25 +38,29 @@ reportVideo.onclick = () => {
             const completeBlob = new Blob(chunks, { type: chunks[0].type });
             reportVideo.result = URL.createObjectURL(completeBlob);
             overlay.open();
-        };
+            reportPreview.video.refresh(URL.createObjectURL(completeBlob));
 
+
+        };
+        stop.addEventListener("click", () => {
+            recorder.stop();
+            stream.getVideoTracks()[0].stop();
+            reportPicture.style.display = "initial";
+            reportVideo.innerHTML = icon;
+            reportVideo.isRecording = false;
+        });
         recorder.start();
     }
 
     start.addEventListener("click", () => {
-        start.setAttribute("disabled", true);
-        stop.removeAttribute("disabled");
-
+        if (reportVideo.isRecording) return ;
+        reportVideo.isRecording = true;
+        reportPicture.style.display = "none";
+        reportVideo.innerHTML = iconStop;
         startRecording();
     });
 
-    stop.addEventListener("click", () => {
-        stop.setAttribute("disabled", true);
-        start.removeAttribute("disabled");
 
-        recorder.stop();
-        stream.getVideoTracks()[0].stop();
-    });
 }
 export default reportVideo;
 
