@@ -40,6 +40,22 @@ const workboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
 	mode: 'development',
+	output: {
+		// options related to how webpack emits results
+		path: path.resolve(__dirname, "../backend/static/dist"), // string
+		// the target directory for all output files
+		// must be an absolute path (use the Node.js path module)
+		filename: "main.js", // string
+		// the filename template for entry chunks
+		publicPath: "/assets/", // string
+		// the url to the output directory resolved relative to the HTML page
+		library: "MyLibrary", // string,
+		// the name of the exported library
+		libraryTarget: "umd", // universal module definition
+		// the type of the exported library
+		/* Advanced output configuration (click to show) */
+		/* Expert output configuration (on own risk) */
+	},
 	watch: true,
 	plugins: [
 		new webpack.ProgressPlugin(),

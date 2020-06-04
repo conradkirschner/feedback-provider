@@ -10,7 +10,11 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 
 app.listen(3000, () => {
     app.get("/", (req, res, next) => {
-        res.json(["Tony","Lisa","Michael","Ginger","Food"]);
+        console.log("requested");
+        res.sendfile(__dirname + '/static/dist/index.html');
+    });
+    app.get("/assets/main.js", (req, res, next) => {
+        res.sendfile(__dirname + '/static/dist/main.js');
     });
     app.post("/report", (req, res, next) => {
         sendmail(req.body.userreport, req.body.attachment, req.body.type)
