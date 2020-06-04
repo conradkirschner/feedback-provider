@@ -51,10 +51,10 @@ form.onsubmit = (event) => {
     const userFeedbackText = textAreaElement.value;
 
     if (reportPicture.result !== null) {
-        sendReport(userFeedbackText, reportPicture.result.toDataURL());
+        sendReport(userFeedbackText, reportPicture.result.toDataURL(), 'picture');
     }
     if (reportVideo.result !== null) {
-        sendReport(userFeedbackText, reportVideo.result);
+        sendReport(userFeedbackText, reportVideo.result, 'video');
     }
     textAreaElement.value = "";
     overlay.close();

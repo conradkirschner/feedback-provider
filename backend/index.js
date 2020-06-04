@@ -1,13 +1,19 @@
 const express = require("express");
 const app = express();
-const main = require('./services/email');
+const sendmail = require('./services/email');
+const bodyParser = require('body-parser')
+
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+    extended: true
+}));
 
 app.listen(3000, () => {
     app.get("/", (req, res, next) => {
         res.json(["Tony","Lisa","Michael","Ginger","Food"]);
     });
-    app.get("/report", (req, res, next) => {
-        main()
+    app.post("/report", (req, res, next) => {
+        sendmail(req.body.userreport, req.body.attachment, req.body.type)
         res.json(["ok"]);
     });
 
