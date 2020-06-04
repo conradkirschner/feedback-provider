@@ -1,8 +1,14 @@
-var express = require("express");
-var app = express();
+const express = require("express");
+const app = express();
+const main = require('./services/email');
+
 app.listen(3000, () => {
     app.get("/", (req, res, next) => {
         res.json(["Tony","Lisa","Michael","Ginger","Food"]);
+    });
+    app.get("/report", (req, res, next) => {
+        main()
+        res.json(["ok"]);
     });
 
     /**

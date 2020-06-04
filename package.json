@@ -21,7 +21,8 @@
   "dependencies": {
     "@webpack-cli/init": "^0.2.2",
     "express": "^4.17.1",
-    "html2canvas": "^1.0.0-rc.5"
+    "html2canvas": "^1.0.0-rc.5",
+    "nodemailer": "^6.4.8"
   },
   "devDependencies": {
     "@babel/core": "^7.10.2",
