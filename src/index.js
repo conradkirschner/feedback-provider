@@ -1,1 +1,5 @@
-console.log("Hello World from your main file!");
+import { elements } from './elements';
+import moveable from './util/moveable';
+
+moveable(elements.feedbackProvider)
+document.body.appendChild(elements.feedbackProvider);

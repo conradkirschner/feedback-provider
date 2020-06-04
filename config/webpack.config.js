@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 /*
  * SplitChunksPlugin is enabled by default and replaced
@@ -39,7 +40,7 @@ const workboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
 	mode: 'development',
-
+	watch: true,
 	plugins: [
 		new webpack.ProgressPlugin(),
 		new MiniCssExtractPlugin({ filename: 'main.[chunkhash].css' }),
@@ -47,7 +48,8 @@ module.exports = {
 			swDest: 'sw.js',
 			clientsClaim: true,
 			skipWaiting: false
-		})
+		}),
+		new HtmlWebpackPlugin()
 	],
 
 	module: {
@@ -56,6 +58,10 @@ module.exports = {
 				test: /.(js|jsx)$/,
 				include: [],
 				loader: 'babel-loader'
+			},
+			{
+				test: /\.svg$/,
+				loader: 'svg-inline-loader'
 			},
 			{
 				test: /.(scss|css)$/,
